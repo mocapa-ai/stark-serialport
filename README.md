@@ -1,4 +1,19 @@
 # BrainCo RevoHand SDK Examples
+## What's different from the original repo
+### UV package wrapper
+This repo wraps the original code as a Python package so it can be installed and run via `uv` without cloning the repo.
+- Only the `revo2` module is packaged currently.
+
+#### Installing:
+```bash
+uv build
+```
+
+#### Running:
+```bash
+uv build
+uv run python python/revo2/revo2_ctrl.py --port dev/tty/USB0
+```
 
 ## Official Documentation
 
