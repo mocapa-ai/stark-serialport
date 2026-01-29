@@ -12,7 +12,7 @@ uv build
 #### Running:
 ```bash
 uv build
-uv run python python/revo2/revo2_ctrl.py --port dev/tty/USB0
+uv run python stark_serialport/revo2/revo2_ctrl.py --port /dev/ttyUSB0
 ```
 
 ## Official Documentation
