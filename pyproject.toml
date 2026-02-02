@@ -20,4 +20,4 @@ module-name = "stark_serialport"
 module-root = "."
 
 [project.scripts]
-revo2_ctrl = "revo2:revo2_ctrl"
+revo2_ctrl = "stark_serialport.revo2.revo2_ctrl:main"

@@ -16,10 +16,14 @@ Important notes:
 
 import asyncio
 import sys
-from revo2_utils import *
+from stark_serialport.revo2.revo2_utils import *
 import argparse
 
-async def main(args):
+def main():
+    args = parse_args()
+    asyncio.run(async_main(args))
+
+async def async_main(args):
     """Main function: Initialize Revo2 dexterous hand and execute control examples"""
     # Connect to Revo2 device
     print("Port:", args.port)
@@ -231,7 +235,5 @@ def parse_args():
 
     return parser.parse_args()
 
-
 if __name__ == "__main__":
-    args = parse_args()
-    asyncio.run(main(args))
+    sys.exit(main())
