@@ -1,0 +1,23 @@
+[project]
+name = "stark-serialport"
+version = "0.1.0"
+description = "Revo2 hands stark serial port communication library"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "asyncio>=3.4.3",
+    "bc-stark-sdk==1.0.0",
+    "colorlog>=6.9.0",
+]
+
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "stark_serialport"
+module-root = "."
+
+[project.scripts]
+revo2_ctrl = "stark_serialport.revo2.revo2_ctrl:main"

@@ -16,13 +16,18 @@ Important notes:
 
 import asyncio
 import sys
-from revo2_utils import *
+from stark_serialport.revo2.revo2_utils import *
+import argparse
 
+def main():
+    args = parse_args()
+    asyncio.run(async_main(args))
 
-async def main():
+async def async_main(args):
     """Main function: Initialize Revo2 dexterous hand and execute control examples"""
     # Connect to Revo2 device
-    (client, slave_id) = await open_modbus_revo2(port_name=None) # Replace with actual serial port name, passing None will attempt auto-detection
+    print("Port:", args.port)
+    (client, slave_id) = await open_modbus_revo2(port_name=args.port) # Replace with actual serial port name, passing None will attempt auto-detection
 
     # Directly specify device ID, serial port, and baud rate
     # slave_id = 0x7e
@@ -216,6 +221,19 @@ async def get_and_display_motor_status(client, slave_id):
     # logger.info(f"states: {list(status.states)}")        # State
     logger.info(f"Finger status: {status.description}")
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Revo2 Dexterous Hand Control Example"
+    )
+
+    parser.add_argument(
+        "--port",
+        type=str,
+        default=None,
+        help="Serial port (e.g. /dev/ttyUSB0). If not provided, auto-detection is used.",
+    )
+
+    return parser.parse_args()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    sys.exit(main())
